@@ -1,0 +1,35 @@
+using System;
+
+namespace dzkurs
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Player player = new Player('@', 8, 15);
+
+            player.DrawPlayer();
+        }
+
+        class Player
+        {
+            public char Character;
+            public int X;
+            public int Y;
+
+            public Player(char character, int x, int y)
+            {
+                Character = character;
+                X = x;
+                Y = y;
+            }
+
+            public void DrawPlayer()
+            {
+                Console.SetCursorPosition(Y, X);
+
+                Console.WriteLine(Character);
+            }
+        }
+    }
+}
