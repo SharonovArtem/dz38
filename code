@@ -9,33 +9,31 @@ namespace dzkurs
             Player player = new Player(15, 7, '@');
             Renderer renderer = new Renderer();
 
-            renderer.DrawPlayer(player.PlayerPositionX, player.PlayerPositionY, player.Character);
+            renderer.DrawPlayer(player);
         }
     }
 
     class Player
     {
-        public int PlayerPositionX { get; private set; }
-        public int PlayerPositionY { get; private set; }
-        public char Character { get; private set; }
-
-        public Player(int playerPositionX, int playerPositionY, char character)
+        public Player(int playerPositionX, int playerPositionY, char symbol)
         {
             PlayerPositionX = playerPositionX;
-
             PlayerPositionY = playerPositionY;
-
-            Character = character;
+            Symbol = symbol;
         }
+
+        public int PlayerPositionX { get; private set; }
+        public int PlayerPositionY { get; private set; }
+        public char Symbol { get; private set; }
     }
 
     class Renderer
     {
-        public void DrawPlayer(int x, int y, char character)
+        public void DrawPlayer(Player player)
         {
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(player.PlayerPositionX, player.PlayerPositionY);
 
-            Console.WriteLine(character);
+            Console.WriteLine(player.Symbol);
         }
     }
 }
