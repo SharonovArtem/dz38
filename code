@@ -6,30 +6,56 @@ namespace dzkurs
     {
         static void Main(string[] args)
         {
-            Player player = new Player('@', 8, 15);
+            Player player = new Player(15, 7);
+            Renderer renderer = new Renderer();
 
-            player.DrawPlayer();
+            renderer.DrawPlayer(player.X, player.Y);
+        }
+    }
+
+    class Player
+    {
+        private int _x;
+        private int _y;
+
+        public int X
+        {
+            get
+            {
+                return _x;
+            }
+            private set
+            {
+                _x = value;
+            }
         }
 
-        class Player
+        public int Y
         {
-            public char Character;
-            public int X;
-            public int Y;
-
-            public Player(char character, int x, int y)
+            get
             {
-                Character = character;
-                X = x;
-                Y = y;
+                return _y;
             }
-
-            public void DrawPlayer()
+            private set
             {
-                Console.SetCursorPosition(Y, X);
-
-                Console.WriteLine(Character);
+                _y = value;
             }
+        }
+
+        public Player(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+    }
+
+    class Renderer
+    {
+        public void DrawPlayer(int x, int y, char character = '@')
+        {
+            Console.SetCursorPosition(x, y);
+
+            Console.WriteLine(character);
         }
     }
 }
